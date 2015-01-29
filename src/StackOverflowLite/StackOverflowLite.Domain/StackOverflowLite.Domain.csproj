@@ -44,6 +44,9 @@
     <Compile Include="Question.cs" />
     <Compile Include="Tag.cs" />
     <Compile Include="User.cs" />
+    <Compile Include="Validators\AnswerValidator.cs" />
+    <Compile Include="Validators\IDomainValidator.cs" />
+    <Compile Include="Validators\QuestionValidator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
