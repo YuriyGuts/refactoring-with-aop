@@ -4,7 +4,7 @@ namespace StackOverflowLite.CrossCutting.Utils
 {
     public static class BoundaryLogging<T>
     {
-        public static T Wrapper(string methodName, Func<T> function)
+        public static T Run(string methodName, Func<T> function)
         {
             Console.WriteLine("{0:HH:mm:ss.fff}: {1} started.", DateTime.Now, methodName);
             try
