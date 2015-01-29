@@ -1,4 +1,5 @@
 ﻿using System;
+using StackOverflowLite.CrossCutting.Utils;
 using StackOverflowLite.Data.Contracts;
 using StackOverflowLite.Domain;
 using StackOverflowLite.Service.Contracts;
@@ -29,19 +30,15 @@ namespace StackOverflowLite.Service.Implementation
                 throw new ArgumentException("A question cannot have a negative number of votes");
             }
 
-            Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion started.", DateTime.Now);
-
-            var attemptsLeft = 3;
-            try
+            return BoundaryLogging<int>.Wrapper("AddReputationForQuestion", () =>
             {
+                var attemptsLeft = 3;
                 while (attemptsLeft > 0)
                 {
                     try
                     {
-                        int pointsToAdd = question.UpVotes * 5 - question.DownVotes * 2;
+                        int pointsToAdd = question.UpVotes*5 - question.DownVotes*2;
                         int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
-
-                        Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion completed.", DateTime.Now);
                         return newReputation;
                     }
                     catch
@@ -53,12 +50,8 @@ namespace StackOverflowLite.Service.Implementation
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion failed with exception: {1}.", DateTime.Now, ex);
-            }
-            throw new Exception();
+                throw new Exception();
+            });
         }
 
         public int AddReputationForAnswer(Answer answer)
@@ -76,20 +69,16 @@ namespace StackOverflowLite.Service.Implementation
                 throw new ArgumentException("An answer cannot have a negative number of votes");
             }
 
-            Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer started.", DateTime.Now);
-
-            var attemptsLeft = 3;
-            try
+            return BoundaryLogging<int>.Wrapper("AddReputationForAnswer", () =>
             {
+                var attemptsLeft = 3;
                 while (attemptsLeft > 0)
                 {
                     try
                     {
 
-                        int pointsToAdd = answer.UpVotes * 10 - answer.DownVotes * 3;
+                        int pointsToAdd = answer.UpVotes*10 - answer.DownVotes*3;
                         int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
-
-                        Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer completed.", DateTime.Now);
                         return newReputation;
                     }
                     catch
@@ -101,12 +90,8 @@ namespace StackOverflowLite.Service.Implementation
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer failed with exception: {1}.", DateTime.Now, ex);
-            }
-            throw new Exception();
+                throw new Exception();
+            });
         }
     }
 }

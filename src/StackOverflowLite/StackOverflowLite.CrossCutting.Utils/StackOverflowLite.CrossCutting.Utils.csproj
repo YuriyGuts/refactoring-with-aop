@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{97066D53-7406-4645-B54C-1AD568D8736A}</ProjectGuid>
+    <ProjectGuid>{17F0362A-E97E-4B42-9663-C1A032E96535}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StackOverflowLite.Service.Implementation</RootNamespace>
-    <AssemblyName>StackOverflowLite.Service.Implementation</AssemblyName>
+    <RootNamespace>StackOverflowLite.CrossCutting.Utils</RootNamespace>
+    <AssemblyName>StackOverflowLite.CrossCutting.Utils</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,26 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ReputationService.cs" />
+    <Compile Include="BoundaryLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\StackOverflowLite.CrossCutting.Utils\StackOverflowLite.CrossCutting.Utils.csproj">
-      <Project>{17F0362A-E97E-4B42-9663-C1A032E96535}</Project>
-      <Name>StackOverflowLite.CrossCutting.Utils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StackOverflowLite.Data.Contracts\StackOverflowLite.Data.Contracts.csproj">
-      <Project>{B4366387-134C-4821-A3DB-FDF77BB3CEDE}</Project>
-      <Name>StackOverflowLite.Data.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StackOverflowLite.Domain\StackOverflowLite.Domain.csproj">
-      <Project>{3AF4389B-BF9B-45B6-B372-D0CD78AEF665}</Project>
-      <Name>StackOverflowLite.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StackOverflowLite.Service.Contracts\StackOverflowLite.Service.Contracts.csproj">
-      <Project>{F11B1C1B-B6AA-47DC-85B7-C04AC479DCE8}</Project>
-      <Name>StackOverflowLite.Service.Contracts</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
