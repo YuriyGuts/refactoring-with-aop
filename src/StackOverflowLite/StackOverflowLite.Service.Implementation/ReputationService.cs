@@ -16,6 +16,7 @@ namespace StackOverflowLite.Service.Implementation
         }
 
         [BoundaryLogging]
+        [MultipleAttemptExecution(3)]
         public int AddReputationForQuestion(Question question)
         {
             if (question == null)
@@ -31,28 +32,13 @@ namespace StackOverflowLite.Service.Implementation
                 throw new ArgumentException("A question cannot have a negative number of votes");
             }
 
-            var attemptsLeft = 3;
-            while (attemptsLeft > 0)
-            {
-                try
-                {
-                    int pointsToAdd = question.UpVotes * 5 - question.DownVotes * 2;
-                    int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
-                    return newReputation;
-                }
-                catch
-                {
-                    attemptsLeft--;
-                    if (attemptsLeft == 0)
-                    {
-                        throw;
-                    }
-                }
-            }
-            throw new Exception();
+            int pointsToAdd = question.UpVotes * 5 - question.DownVotes * 2;
+            int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
+            return newReputation;
         }
 
         [BoundaryLogging]
+        [MultipleAttemptExecution(3)]
         public int AddReputationForAnswer(Answer answer)
         {
             if (answer == null)
@@ -68,26 +54,9 @@ namespace StackOverflowLite.Service.Implementation
                 throw new ArgumentException("An answer cannot have a negative number of votes");
             }
 
-            var attemptsLeft = 3;
-            while (attemptsLeft > 0)
-            {
-                try
-                {
-
-                    int pointsToAdd = answer.UpVotes * 10 - answer.DownVotes * 3;
-                    int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
-                    return newReputation;
-                }
-                catch
-                {
-                    attemptsLeft--;
-                    if (attemptsLeft == 0)
-                    {
-                        throw;
-                    }
-                }
-            }
-            throw new Exception();
+            int pointsToAdd = answer.UpVotes * 10 - answer.DownVotes * 3;
+            int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
+            return newReputation;
         }
     }
 }
