@@ -1,4 +1,5 @@
 ﻿using System;
+using StackOverflowLite.CrossCutting.Aspects;
 using StackOverflowLite.Data.Contracts;
 using StackOverflowLite.Domain;
 using StackOverflowLite.Service.Contracts;
@@ -14,6 +15,7 @@ namespace StackOverflowLite.Service.Implementation
             _userDataService = userDataService;
         }
 
+        [BoundaryLogging]
         public int AddReputationForQuestion(Question question)
         {
             if (question == null)
@@ -29,38 +31,28 @@ namespace StackOverflowLite.Service.Implementation
                 throw new ArgumentException("A question cannot have a negative number of votes");
             }
 
-            Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion started.", DateTime.Now);
-
             var attemptsLeft = 3;
-            try
+            while (attemptsLeft > 0)
             {
-                while (attemptsLeft > 0)
+                try
                 {
-                    try
+                    int pointsToAdd = question.UpVotes * 5 - question.DownVotes * 2;
+                    int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
+                    return newReputation;
+                }
+                catch
+                {
+                    attemptsLeft--;
+                    if (attemptsLeft == 0)
                     {
-                        int pointsToAdd = question.UpVotes * 5 - question.DownVotes * 2;
-                        int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
-
-                        Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion completed.", DateTime.Now);
-                        return newReputation;
-                    }
-                    catch
-                    {
-                        attemptsLeft--;
-                        if (attemptsLeft == 0)
-                        {
-                            throw;
-                        }
+                        throw;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion failed with exception: {1}.", DateTime.Now, ex);
             }
             throw new Exception();
         }
 
+        [BoundaryLogging]
         public int AddReputationForAnswer(Answer answer)
         {
             if (answer == null)
@@ -76,35 +68,24 @@ namespace StackOverflowLite.Service.Implementation
                 throw new ArgumentException("An answer cannot have a negative number of votes");
             }
 
-            Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer started.", DateTime.Now);
-
             var attemptsLeft = 3;
-            try
+            while (attemptsLeft > 0)
             {
-                while (attemptsLeft > 0)
+                try
                 {
-                    try
-                    {
 
-                        int pointsToAdd = answer.UpVotes * 10 - answer.DownVotes * 3;
-                        int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
-
-                        Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer completed.", DateTime.Now);
-                        return newReputation;
-                    }
-                    catch
+                    int pointsToAdd = answer.UpVotes * 10 - answer.DownVotes * 3;
+                    int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
+                    return newReputation;
+                }
+                catch
+                {
+                    attemptsLeft--;
+                    if (attemptsLeft == 0)
                     {
-                        attemptsLeft--;
-                        if (attemptsLeft == 0)
-                        {
-                            throw;
-                        }
+                        throw;
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer failed with exception: {1}.", DateTime.Now, ex);
             }
             throw new Exception();
         }

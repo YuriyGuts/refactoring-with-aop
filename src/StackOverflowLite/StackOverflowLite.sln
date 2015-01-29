@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.Simulator", "StackOverflowLite.Simulator\StackOverflowLite.Simulator.csproj", "{8779E45A-2BB7-4ECA-A990-347A61AE5F80}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.Data.Contracts", "StackOverflowLite.Data.Contracts\StackOverflowLite.Data.Contracts.csproj", "{B4366387-134C-4821-A3DB-FDF77BB3CEDE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.Data.Implementation", "StackOverflowLite.Data.Implementation\StackOverflowLite.Data.Implementation.csproj", "{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.CrossCutting.Aspects", "StackOverflowLite.CrossCutting.Aspects\StackOverflowLite.CrossCutting.Aspects.csproj", "{D232DDAF-3A04-4B45-BE94-BE50FA6D046A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D232DDAF-3A04-4B45-BE94-BE50FA6D046A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D232DDAF-3A04-4B45-BE94-BE50FA6D046A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D232DDAF-3A04-4B45-BE94-BE50FA6D046A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D232DDAF-3A04-4B45-BE94-BE50FA6D046A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

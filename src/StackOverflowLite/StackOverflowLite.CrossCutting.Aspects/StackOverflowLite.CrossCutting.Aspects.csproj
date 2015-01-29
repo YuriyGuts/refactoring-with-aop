@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8779E45A-2BB7-4ECA-A990-347A61AE5F80}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{D232DDAF-3A04-4B45-BE94-BE50FA6D046A}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>StackOverflowLite.Simulator</RootNamespace>
-    <AssemblyName>StackOverflowLite.Simulator</AssemblyName>
+    <RootNamespace>StackOverflowLite.CrossCutting.Aspects</RootNamespace>
+    <AssemblyName>StackOverflowLite.CrossCutting.Aspects</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <DontImportPostSharp>True</DontImportPostSharp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,34 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="BoundaryLogging.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\StackOverflowLite.Data.Contracts\StackOverflowLite.Data.Contracts.csproj">
-      <Project>{B4366387-134C-4821-A3DB-FDF77BB3CEDE}</Project>
-      <Name>StackOverflowLite.Data.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StackOverflowLite.Data.Implementation\StackOverflowLite.Data.Implementation.csproj">
-      <Project>{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}</Project>
-      <Name>StackOverflowLite.Data.Implementation</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StackOverflowLite.Domain\StackOverflowLite.Domain.csproj">
-      <Project>{3AF4389B-BF9B-45B6-B372-D0CD78AEF665}</Project>
-      <Name>StackOverflowLite.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StackOverflowLite.Service.Contracts\StackOverflowLite.Service.Contracts.csproj">
-      <Project>{F11B1C1B-B6AA-47DC-85B7-C04AC479DCE8}</Project>
-      <Name>StackOverflowLite.Service.Contracts</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StackOverflowLite.Service.Implementation\StackOverflowLite.Service.Implementation.csproj">
-      <Project>{97066D53-7406-4645-B54C-1AD568D8736A}</Project>
-      <Name>StackOverflowLite.Service.Implementation</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\PostSharp.4.0.41\tools\PostSharp.targets" Condition="Exists('..\packages\PostSharp.4.0.41\tools\PostSharp.targets')" />
