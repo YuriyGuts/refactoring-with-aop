@@ -10,6 +10,8 @@ namespace StackOverflowLite.Domain
 
         public User Author { get; set; }
 
+        public string Text { get; set; }
+
         public int UpVotes { get; set; }
 
         public int DownVotes { get; set; }

@@ -1,5 +1,4 @@
-﻿using System;
-using StackOverflowLite.Data.Contracts;
+﻿using StackOverflowLite.Data.Contracts;
 using StackOverflowLite.Domain;
 using StackOverflowLite.Service.Contracts;
 
@@ -16,12 +15,16 @@ namespace StackOverflowLite.Service.Implementation
 
         public int AddReputationForQuestion(Question question)
         {
-            throw new NotImplementedException();
+            int pointsToAdd = question.UpVotes * 5 - question.DownVotes * 2;
+            int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
+            return newReputation;
         }
 
         public int AddReputationForAnswer(Answer answer)
         {
-            throw new NotImplementedException();
+            int pointsToAdd = answer.UpVotes * 10 - answer.DownVotes * 3;
+            int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
+            return newReputation;
         }
     }
 }

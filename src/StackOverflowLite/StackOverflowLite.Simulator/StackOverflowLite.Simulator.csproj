@@ -47,6 +47,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StackOverflowLite.Data.Contracts\StackOverflowLite.Data.Contracts.csproj">
+      <Project>{B4366387-134C-4821-A3DB-FDF77BB3CEDE}</Project>
+      <Name>StackOverflowLite.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StackOverflowLite.Data.Implementation\StackOverflowLite.Data.Implementation.csproj">
+      <Project>{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}</Project>
+      <Name>StackOverflowLite.Data.Implementation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StackOverflowLite.Domain\StackOverflowLite.Domain.csproj">
+      <Project>{3AF4389B-BF9B-45B6-B372-D0CD78AEF665}</Project>
+      <Name>StackOverflowLite.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StackOverflowLite.Service.Contracts\StackOverflowLite.Service.Contracts.csproj">
+      <Project>{F11B1C1B-B6AA-47DC-85B7-C04AC479DCE8}</Project>
+      <Name>StackOverflowLite.Service.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StackOverflowLite.Service.Implementation\StackOverflowLite.Service.Implementation.csproj">
+      <Project>{97066D53-7406-4645-B54C-1AD568D8736A}</Project>
+      <Name>StackOverflowLite.Service.Implementation</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
