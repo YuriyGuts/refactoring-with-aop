@@ -1,5 +1,4 @@
-﻿using System;
-using StackOverflowLite.CrossCutting.Utils;
+﻿using StackOverflowLite.CrossCutting.Utils;
 using StackOverflowLite.Data.Contracts;
 using StackOverflowLite.Domain;
 using StackOverflowLite.Domain.Validators;
@@ -19,55 +18,28 @@ namespace StackOverflowLite.Service.Implementation
         public int AddReputationForQuestion(Question question)
         {
             QuestionValidator.ValidateQuestion(question);
-            return BoundaryLogging<int>.Wrapper("AddReputationForQuestion", () =>
+            return BoundaryLogging<int>.Run("AddReputationForQuestion", () =>
             {
-                var attemptsLeft = 3;
-                while (attemptsLeft > 0)
+                return MultipleAttemptExecutor<int>.Run(3, () =>
                 {
-                    try
-                    {
-                        int pointsToAdd = question.UpVotes*5 - question.DownVotes*2;
-                        int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
-                        return newReputation;
-                    }
-                    catch
-                    {
-                        attemptsLeft--;
-                        if (attemptsLeft == 0)
-                        {
-                            throw;
-                        }
-                    }
-                }
-                throw new Exception();
+                    int pointsToAdd = question.UpVotes * 5 - question.DownVotes * 2;
+                    int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
+                    return newReputation;
+                });
             });
         }
 
         public int AddReputationForAnswer(Answer answer)
         {
             AnswerValidator.ValidateAnswer(answer);
-            return BoundaryLogging<int>.Wrapper("AddReputationForAnswer", () =>
+            return BoundaryLogging<int>.Run("AddReputationForAnswer", () =>
             {
-                var attemptsLeft = 3;
-                while (attemptsLeft > 0)
+                return MultipleAttemptExecutor<int>.Run(3, () =>
                 {
-                    try
-                    {
-
-                        int pointsToAdd = answer.UpVotes*10 - answer.DownVotes*3;
-                        int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
-                        return newReputation;
-                    }
-                    catch
-                    {
-                        attemptsLeft--;
-                        if (attemptsLeft == 0)
-                        {
-                            throw;
-                        }
-                    }
-                }
-                throw new Exception();
+                    int pointsToAdd = answer.UpVotes * 10 - answer.DownVotes * 3;
+                    int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
+                    return newReputation;
+                });
             });
         }
     }
