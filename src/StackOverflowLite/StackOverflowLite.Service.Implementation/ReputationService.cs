@@ -31,11 +31,34 @@ namespace StackOverflowLite.Service.Implementation
 
             Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion started.", DateTime.Now);
 
-            int pointsToAdd = question.UpVotes * 5 - question.DownVotes * 2;
-            int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
+            var attemptsLeft = 3;
+            try
+            {
+                while (attemptsLeft > 0)
+                {
+                    try
+                    {
+                        int pointsToAdd = question.UpVotes * 5 - question.DownVotes * 2;
+                        int newReputation = _userDataService.AddReputationForUser(question.Author, pointsToAdd);
 
-            Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion completed.", DateTime.Now);
-            return newReputation;
+                        Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion completed.", DateTime.Now);
+                        return newReputation;
+                    }
+                    catch
+                    {
+                        attemptsLeft--;
+                        if (attemptsLeft == 0)
+                        {
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForQuestion failed with exception: {1}.", DateTime.Now, ex);
+            }
+            throw new Exception();
         }
 
         public int AddReputationForAnswer(Answer answer)
@@ -55,11 +78,35 @@ namespace StackOverflowLite.Service.Implementation
 
             Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer started.", DateTime.Now);
 
-            int pointsToAdd = answer.UpVotes * 10 - answer.DownVotes * 3;
-            int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
+            var attemptsLeft = 3;
+            try
+            {
+                while (attemptsLeft > 0)
+                {
+                    try
+                    {
 
-            Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer completed.", DateTime.Now);
-            return newReputation;
+                        int pointsToAdd = answer.UpVotes * 10 - answer.DownVotes * 3;
+                        int newReputation = _userDataService.AddReputationForUser(answer.Author, pointsToAdd);
+
+                        Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer completed.", DateTime.Now);
+                        return newReputation;
+                    }
+                    catch
+                    {
+                        attemptsLeft--;
+                        if (attemptsLeft == 0)
+                        {
+                            throw;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("{0:HH:mm:ss.fff}: AddReputationForAnswer failed with exception: {1}.", DateTime.Now, ex);
+            }
+            throw new Exception();
         }
     }
 }
