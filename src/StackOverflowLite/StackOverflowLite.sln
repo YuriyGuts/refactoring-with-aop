@@ -7,6 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.Simulator
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.Domain", "StackOverflowLite.Domain\StackOverflowLite.Domain.csproj", "{3AF4389B-BF9B-45B6-B372-D0CD78AEF665}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.Service.Contracts", "StackOverflowLite.Service.Contracts\StackOverflowLite.Service.Contracts.csproj", "{F11B1C1B-B6AA-47DC-85B7-C04AC479DCE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.Service.Implementation", "StackOverflowLite.Service.Implementation\StackOverflowLite.Service.Implementation.csproj", "{97066D53-7406-4645-B54C-1AD568D8736A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.Data.Contracts", "StackOverflowLite.Data.Contracts\StackOverflowLite.Data.Contracts.csproj", "{B4366387-134C-4821-A3DB-FDF77BB3CEDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StackOverflowLite.Data.Implementation", "StackOverflowLite.Data.Implementation\StackOverflowLite.Data.Implementation.csproj", "{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +29,22 @@ Global
 		{3AF4389B-BF9B-45B6-B372-D0CD78AEF665}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AF4389B-BF9B-45B6-B372-D0CD78AEF665}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AF4389B-BF9B-45B6-B372-D0CD78AEF665}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F11B1C1B-B6AA-47DC-85B7-C04AC479DCE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F11B1C1B-B6AA-47DC-85B7-C04AC479DCE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F11B1C1B-B6AA-47DC-85B7-C04AC479DCE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F11B1C1B-B6AA-47DC-85B7-C04AC479DCE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97066D53-7406-4645-B54C-1AD568D8736A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97066D53-7406-4645-B54C-1AD568D8736A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97066D53-7406-4645-B54C-1AD568D8736A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97066D53-7406-4645-B54C-1AD568D8736A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4366387-134C-4821-A3DB-FDF77BB3CEDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4366387-134C-4821-A3DB-FDF77BB3CEDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4366387-134C-4821-A3DB-FDF77BB3CEDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4366387-134C-4821-A3DB-FDF77BB3CEDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4239BE4E-DE03-43AE-B45A-DC91F3A92FBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,5 +9,7 @@ namespace StackOverflowLite.Domain
         public string Username { get; set; }
 
         public string DisplayName { get; set; }
+
+        public int Reputation { get; set; }
     }
 }
