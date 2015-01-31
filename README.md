@@ -9,3 +9,7 @@ Follow the commit graph to understand the refactoring steps: `git log --graph --
 * `git checkout v0.1-before-refactoring`: messy code with cross-cutting concerns scattered throughout the methods.
 * `git checkout v0.2-oop-refactoring`: attempt to refactor the cross-cutting concerns using simple OOP techniques.
 * `git checkout v0.3-aop-refactoring`: attempt to refactor the cross-cutting concerns using aspect-oriented programming and the PostSharp framework.
+
+## Update: Video & Slides
+
+The recording is available on [Lviv .NET User Group Blog](http://dotnetug-lviv.blogspot.com/2015/01/lviv-net-user-group-s5e1.html) (Ukrainian, slides in English).
